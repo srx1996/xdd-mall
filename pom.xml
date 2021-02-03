@@ -14,5 +14,8 @@
         <module>xddmall-order</module>
         <module>xddmall-product</module>
         <module>xddmall-ware</module>
+        <module>renren-fast</module>
+        <module>renren-generator</module>
+        <module>xddmall-common</module>
     </modules>
 </project>
