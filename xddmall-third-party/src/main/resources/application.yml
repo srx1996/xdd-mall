@@ -1,0 +1,16 @@
+spring:
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+    alicloud:
+      access-key: 111
+      secret-key: 111
+      oss:
+        endpoint: oss-cn-hangzhou.aliyuncs.com
+        bucket: xdd-mall
+  application:
+    name: xddmall-third-party
+server:
+  port: 30000
+
