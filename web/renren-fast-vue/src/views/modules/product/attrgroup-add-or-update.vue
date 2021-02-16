@@ -3,6 +3,7 @@
     :title="!dataForm.id ? '新增' : '修改'"
     :close-on-click-modal="false"
     :visible.sync="visible"
+    @closed="dialogClose"
   >
     <el-form
       :model="dataForm"
@@ -32,6 +33,8 @@
           v-model="dataForm.catelogIds"
           :options="categorys"
           :props="props"
+          filterable
+          placeholder="试试搜索"
         >
         </el-cascader>
       </el-form-item>
@@ -79,6 +82,9 @@ export default {
     };
   },
   methods: {
+    dialogClose() {
+      this.dataForm.catelogIds = [];
+    },
     getCategorys() {
       this.$http({
         url: this.$http.adornUrl("/product/category/list/tree"),
@@ -106,6 +112,8 @@ export default {
               this.dataForm.descript = data.attrGroup.descript;
               this.dataForm.icon = data.attrGroup.icon;
               this.dataForm.catelogId = data.attrGroup.catelogId;
+              //查出catelogId的完整路径
+              this.dataForm.catelogIds = data.attrGroup.catelogPath;
             }
           });
         }

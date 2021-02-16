@@ -8,21 +8,35 @@ package com.srx.xddmall.product;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.srx.xddmall.product.entity.BrandEntity;
 import com.srx.xddmall.product.service.BrandService;
+import com.srx.xddmall.product.service.CategoryService;
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import javax.annotation.Resource;
 import java.io.File;
+import java.util.Arrays;
 import java.util.List;
 
+@Slf4j
 @SpringBootTest
 class XddmallProductApplicationTests {
 
     @Autowired
     BrandService brandService;
+
+    @Autowired
+    CategoryService categoryService;
 //    @Resource
 //    OSSClient ossClient;
+
+    @Test
+    public void test1() {
+        Long[] path = categoryService.findCatelogPath(225L);
+        log.info("完整路径 : {}", Arrays.asList(path));
+    }
+
 
     /**
      * 阿里云对象存储,文件上传测试
